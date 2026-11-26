@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080910">
+<title>ASCII BLOOM — Digital Flower Garden</title>
+<style>
+:root{--bg:#080910;--panel:rgba(18,20,34,.78);--line:rgba(180,170,255,.16);--text:#f5f1ff;--muted:#a8a4bc;--pink:#ff73c8;--cyan:#76e7ff}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+body{overflow-x:hidden;background:radial-gradient(ellipse at 50% 42%,#211331 0%,#10101d 35%,#080910 75%)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.23;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(transparent,black 20%,black 80%,transparent)}
+.wrap{max-width:1120px;margin:auto;padding:28px 22px 34px;position:relative}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border:1px solid #9e70d8;border-radius:14px;display:grid;place-items:center;color:#ff9ddd;box-shadow:0 0 28px #b54baf44;font-size:22px}
+.eyebrow{font-size:10px;letter-spacing:.24em;color:#d28de6;font-weight:800}.brand h1{font-size:16px;letter-spacing:.12em;margin:3px 0 0}
+.live{font-size:11px;color:#b8f8db;border:1px solid #6ee7b755;background:#2d9b6920;border-radius:30px;padding:8px 12px;letter-spacing:.12em}.live i{display:inline-block;width:6px;height:6px;background:#72efb2;border-radius:50%;margin-right:7px;box-shadow:0 0 9px #72efb2}
+.hero{display:grid;grid-template-columns:1fr;gap:18px}
+.intro{text-align:center;margin:4px auto 0}.intro h2{font-size:clamp(28px,5vw,48px);line-height:1.08;margin:0 0 10px;letter-spacing:-.04em;background:linear-gradient(90deg,#fff 10%,#ffa4d9 52%,#8be9ff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro p{margin:0;color:var(--muted);font-size:13px;letter-spacing:.025em}
+.stage{position:relative;min-height:510px;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,rgba(116,52,133,.2),transparent 54%),linear-gradient(145deg,rgba(20,20,38,.9),rgba(7,8,15,.92));box-shadow:0 22px 90px #0008,inset 0 0 70px #8a53ba0b}
+.stage:before,.stage:after{content:"";position:absolute;width:250px;height:250px;border-radius:50%;filter:blur(85px);opacity:.15;pointer-events:none}.stage:before{background:#e24cb7;left:12%;top:20%}.stage:after{background:#4f9dff;right:12%;bottom:12%}
+#art{position:absolute;inset:0;width:100%;height:100%;font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;white-space:pre;line-height:1;letter-spacing:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:clamp(5px,.88vw,10px);overflow:hidden;text-shadow:0 0 7px currentColor;user-select:none}
+.corner{position:absolute;font:10px ui-monospace,monospace;letter-spacing:.15em;color:#89839f;z-index:2}.tl{top:18px;left:20px}.tr{top:18px;right:20px}.bl{bottom:18px;left:20px}.br{bottom:18px;right:20px}
+.controls{display:grid;grid-template-columns:1.1fr 1fr 1fr auto;gap:12px;margin-top:16px}
+.control{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:13px 15px;backdrop-filter:blur(14px)}
+.control label{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:#d7d1e8;margin-bottom:10px}.control output{color:#ff9bd5;font-variant-numeric:tabular-nums}
+select,input[type=range]{width:100%;accent-color:#e77bc5}select{background:#111322;color:#eee;border:1px solid #39344f;border-radius:9px;padding:7px;font-size:12px}
+.actions{display:flex;gap:8px;align-items:stretch}.btn{border:1px solid #bd78d7;background:linear-gradient(135deg,#9c4eaa,#583e8c);color:white;border-radius:14px;padding:0 17px;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 7px 24px #a34e9a30;transition:.2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.15)}.btn.secondary{background:#17182a;border-color:#45405f;color:#e8e0fa}
+.footer{display:flex;justify-content:space-between;gap:15px;margin:16px 4px 0;color:#77738c;font-size:10px;letter-spacing:.12em}
+@media(max-width:720px){.wrap{padding:18px 12px 24px}header{margin-bottom:18px}.stage{min-height:430px;border-radius:20px}.controls{grid-template-columns:1fr 1fr}.actions{grid-column:1/-1}.btn{min-height:46px;flex:1}.footer{font-size:9px}.live{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="brand"><div class="logo">✿</div><div><div class="eyebrow">GENERATIVE ART EXPERIENCE</div><h1>ASCII BLOOM / VOL. 01</h1></div></div>
+ <div class="live"><i></i> LIVE GENERATION</div>
+</header>
+<main class="hero">
+ <div class="intro"><h2>Let pixels become poetry.</h2><p>A little digital garden, grown one character at a time.</p></div>
+ <section class="stage" aria-label="Animated ASCII flower">
+  <span class="corner tl">FIG. 001 — BLOOM</span><span class="corner tr">256 COLORS / ASCII</span>
+  <div id="art" aria-live="off"></div>
+  <span class="corner bl">GROW IN YOUR OWN TIME</span><span class="corner br" id="frame">FRAME 0000</span>
+ </section>
+ <section class="controls" aria-label="Animation controls">
+  <div class="control"><label for="palette">COLOR MOOD <output id="paletteName">Aurora</output></label><select id="palette"><option value="aurora">Aurora</option><option value="sunset">Sunset</option><option value="orchid">Orchid</option><option value="mono">Silver screen</option></select></div>
+  <div class="control"><label for="speed">BLOOM SPEED <output id="speedVal">1.0×</output></label><input id="speed" type="range" min=".3" max="2" step=".1" value="1"></div>
+  <div class="control"><label for="density">DETAIL LEVEL <output id="densityVal">High</output></label><input id="density" type="range" min="0" max="2" step="1" value="2"></div>
+  <div class="actions"><button class="btn" id="pause">Ⅱ &nbsp; PAUSE</button><button class="btn secondary" id="restart">↻ &nbsp; REGROW</button></div>
+ </section>
+</main>
+<div class="footer"><span>MADE OF LIGHT, COLOR & CHARACTERS</span><span>NO IMAGES · PURE HTML / CSS / JS</span></div>
+</div>
+<script>
+(()=>{
+const art=document.getElementById('art'), palette=document.getElementById('palette'), speed=document.getElementById('speed'), density=document.getElementById('density');
+const speedVal=document.getElementById('speedVal'),densityVal=document.getElementById('densityVal'),paletteName=document.getElementById('paletteName'),pause=document.getElementById('pause'),frameLabel=document.getElementById('frame');
+const palettes={aurora:[[255,104,194],[191,120,255],[103,216,255],[105,241,185]],sunset:[[255,111,117],[255,174,91],[255,220,135],[202,111,255]],orchid:[[255,139,218],[205,112,255],[143,157,255],[102,225,211]],mono:[[242,238,255],[184,188,210],[132,145,169],[224,214,232]]};
+const names={aurora:'Aurora',sunset:'Sunset',orchid:'Orchid',mono:'Silver screen'};
+let tick=0,paused=false,last=0,cols=90,rows=52,chars=' .,:;irsXA253hMHGS#9B&@',densityChars=[' .:-=+*#%@',' .,:;irsXA253hMHGS#9B&@',' ░▒▓█'];
+const off=document.createElement('canvas'),ctx=off.getContext('2d',{willReadFrequently:true});
+function resize(){const r=art.getBoundingClientRect();const d=Number(density.value);cols=[64,82,100][d];rows=Math.round(cols*r.height/r.width*.49);art.style.fontSize=`${Math.max(5,Math.min(10,r.width/cols*1.55))}px`;}
+function mix(a,b,t){return a.map((v,i)=>Math.round(v+(b[i]-v)*t))}
+function colorAt(t){const p=palettes[palette.value],x=(t%1)*(p.length-1),i=Math.floor(x);return mix(p[i],p[Math.min(i+1,p.length-1)],x-i)}
+function drawFlower(time){
+ const w=cols,h=rows;off.width=w;off.height=h;ctx.clearRect(0,0,w,h);
+ const cx=w*.5,cy=h*.47,phase=time*.001;
+ // stem and leaves
+ ctx.lineCap='round';ctx.lineJoin='round';
+ ctx.strokeStyle='#69d6a0';ctx.lineWidth=2.4;ctx.beginPath();ctx.moveTo(cx,h*.43);ctx.bezierCurveTo(cx-2,h*.59,cx+2,h*.72,cx,h*.84);ctx.stroke();
+ function leaf(x,y,flip){ctx.save();ctx.translate(x,y);ctx.scale(flip,1);ctx.fillStyle='#43b88d';ctx.beginPath();ctx.moveTo(0,0);ctx.quadraticCurveTo(12,-11,17,-2);ctx.quadraticCurveTo(12,8,0,0);ctx.fill();ctx.strokeStyle='#9af0c4';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(14,-2);ctx.stroke();ctx.restore()}
+ leaf(cx-1,h*.64,-1);leaf(cx+1,h*.72,1);
+ // flower petals
+ const bloom=.72+.28*(.5+.5*Math.sin(phase*1.3));
+ for(let layer=0;layer<2;layer++){
+  const n=layer?9:13,rad=(layer?7.2:10.2)*bloom,stretch=layer?.66:.72;
+  for(let i=0;i<n;i++){const a=i*Math.PI*2/n+phase*.11+layer*.22;
+   const px=cx+Math.cos(a)*rad*.47,py=cy+Math.sin(a)*rad*.38;
+   ctx.save();ctx.translate(px,py);ctx.rotate(a+Math.PI/2);
+   ctx.scale(layer?.72:1,1);
+   const grad=ctx.createRadialGradient(0,-rad*.24,1,0,0,rad*.78);const cc=colorAt(i/n+layer*.12);
+   grad.addColorStop(0,`rgba(${cc},.96)`);grad.addColorStop(.62,`rgba(${cc},.72)`);grad.addColorStop(1,`rgba(${cc},.08)`);
+   ctx.fillStyle=grad;ctx.beginPath();ctx.ellipse(0,-rad*.35,rad*.27,rad*.65,0,0,Math.PI*2);ctx.fill();ctx.restore();
+  }
+ }
+ const g=ctx.createRadialGradient(cx,cy,0,cx,cy,4);g.addColorStop(0,'#fff7bd');g.addColorStop(.55,'#ffd86f');g.addColorStop(1,'#e99c52');ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,3.2,0,Math.PI*2);ctx.fill();
+ // elegant flower pot
+ ctx.fillStyle='#b87b8e';ctx.beginPath();ctx.moveTo(cx-7,h*.85);ctx.lineTo(cx+7,h*.85);ctx.lineTo(cx+5,h*.96);ctx.lineTo(cx-5,h*.96);ctx.closePath();ctx.fill();
+ ctx.fillStyle='#e0a0b2';ctx.fillRect(cx-8,h*.84,16,2);
+ // tiny floating stars
+ for(let i=0;i<16;i++){let x=(i*37+Math.sin(phase+i)*5)%w,y=(i*19+Math.cos(phase*.8+i)*3)%h;if(y>h*.2&&y<h*.8){ctx.fillStyle='rgba(220,190,255,.7)';ctx.fillRect(x,y,1,1)}}
+ const data=ctx.getImageData(0,0,w,h).data, glyphs=densityChars[Number(density.value)];let out='';
+ for(let y=0;y<h;y++){for(let x=0;x<w;x++){const k=(y*w+x)*4,r=data[k],g2=data[k+1],b=data[k+2],al=data[k+3];if(al<35){out+=' ';continue}
+  const lum=(r*.3+g2*.59+b*.11)/255;const idx=Math.min(glyphs.length-1,Math.floor(lum*(glyphs.length-1)));
+  const c=colorAt((x/w*.55+y/h*.45+phase*.025)%1);const br=al/255;
+  out+=`<span style="color:rgb(${Math.round(c[0]*br)},${Math.round(c[1]*br)},${Math.round(c[2]*br})">${glyphs[idx]}</span>`;
+ }if(y<h-1)out+='\n'}
+ art.innerHTML=out;
+ frameLabel.textContent='FRAME '+String(Math.floor(tick)).padStart(4,'0');
+}
+function loop(ts){if(!last)last=ts;const dt=Math.min(50,ts-last);last=ts;if(!paused){tick+=dt*Number(speed.value);drawFlower(tick)}requestAnimationFrame(loop)}
+palette.addEventListener('change',()=>{paletteName.textContent=names[palette.value];drawFlower(tick)});
+speed.addEventListener('input',()=>speedVal.textContent=Number(speed.value).toFixed(1)+'×');
+density.addEventListener('input',()=>{densityVal.textContent=['Low','Medium','High'][density.value];resize();drawFlower(tick)});
+pause.addEventListener('click',()=>{paused=!paused;pause.textContent=paused?'▶  PLAY':'Ⅱ  PAUSE';if(!paused)last=0});
+document.getElementById('restart').addEventListener('click',()=>{tick=0;drawFlower(tick)});
+if('ResizeObserver'in window)new ResizeObserver(()=>{resize();drawFlower(tick)}).observe(document.querySelector('.stage'));else window.addEventListener('resize',()=>{resize();drawFlower(tick)});
+resize();drawFlower(0);requestAnimationFrame(loop);
+})();
+</script>
+</body></html>
